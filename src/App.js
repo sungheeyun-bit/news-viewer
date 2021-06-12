@@ -1,30 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import axios from 'axios';
+import React from 'react';
+import { Route } from 'react-router-dom';
+import NewsPage from './pages/NewsPage';
 
 const App = () => {
-  const [data, setData] = useState(null);
-  const onClick = () => {
-    axios
-      .get('https://jsonplaceholder.typicode.com/todos/1')
-      .then((response) => {
-        setData(response.data);
-      });
-  };
-  return (
-    <div>
-      <div>
-        <button onClick={onClick}>불러오기</button>
-      </div>
-      {data && (
-        <textarea
-          rows={7}
-          value={JSON.stringify(data, null, 2)}
-          readOnly={true}
-        />
-      )}
-    </div>
-  );
+  return <Route path="/:category?" component={NewsPage} />;
 };
-
 export default App;
